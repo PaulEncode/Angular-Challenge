@@ -1,0 +1,71 @@
+<div class="container">
+
+
+
+    <div class="row" style="justify-content: center; margin: 15px;">
+        <div class="col-md-2">
+            <button type="button" class="btn btn-info" (click)="changeList(info.previous)"
+                [disabled]="info.previous === null">Preview</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-info" (click)="changeList(info.next)"
+                [disabled]="info.next === null">Next</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item" *ngFor="let item of info.results">
+                <h2 class="accordion-header" id="heading">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        (click)="getDetallePokemon(item.url)" [attr.data-bs-target]="'#' + item.name"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        {{item.name}}
+                    </button>
+                </h2>
+                <div [attr.id]="item.name" class="accordion-collapse collapse" aria-labelledby="heading"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="{{image}}" class="img-thumbnail" alt="{{detallePokemon.name}}">
+                            </div>
+                            <div class="col-md-2">
+                                <h5>Types</h5>
+                                <ul>
+                                    <li *ngFor="let itemA of detallePokemon.types">
+                                        {{itemA.type.name}}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-2">
+                                <h5>Abilities</h5>
+                                <ul>
+                                    <li *ngFor="let itemA of detallePokemon.abilities">
+                                        {{itemA.ability.name}}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <h5>Moves</h5>
+                                It has {{movesCount}} moves
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" style="justify-content: center; margin: 15px;">
+        <div class="col-md-2">
+            <button type="button" class="btn btn-info" (click)="changeList(info.previous)"
+                [disabled]="info.previous === null">Preview</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-info" (click)="changeList(info.next)"
+                [disabled]="info.next === null">Next</button>
+        </div>
+    </div>
+</div>
